@@ -3,7 +3,14 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="/git_clones/clusterdata/cluster-trace-v2026-GenAI/lora_request_trace.csv">
+        <entry key="/data/cluster-trace-v2026-GenAI/lora_request_trace.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/data/cluster-trace-v2026-GenAI/pipeline_inference_data_anon.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
