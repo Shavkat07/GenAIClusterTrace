@@ -1,0 +1,6 @@
+outs:
+- md5: 437f8bad7d0831890115512a82b70244.dir
+  size: 53770963
+  nfiles: 18
+  hash: md5
+  path: cluster-trace-v2026-GenAI
