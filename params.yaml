@@ -1,0 +1,9 @@
+base:
+  project: GenAIClusterTrace
+  random_state: 42
+
+preprocess:
+  raw_gpu_path: "data/cluster-trace-v2026-GenAI/pod_gpu_duty_cycle_anon.csv"
+  raw_qps_path: "data/cluster-trace-v2026-GenAI/qps.csv"
+  output_dir: "data/processed"
+  agg_window: "5min"

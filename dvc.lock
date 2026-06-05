@@ -1,0 +1,29 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/stages/preprocess.py
+    deps:
+    - path: data/cluster-trace-v2026-GenAI/pod_gpu_duty_cycle_anon.csv
+      hash: md5
+      md5: cb760855e5f6606280d8422becfba78a
+      size: 8400464
+    - path: data/cluster-trace-v2026-GenAI/qps.csv
+      hash: md5
+      md5: 2048f460cb12d735e4595197f7dbde98
+      size: 2066880
+    - path: src/stages/preprocess.py
+      hash: md5
+      md5: 23bd272c326f2009c7b497f82077b9f5
+      size: 4390
+    params:
+      params.yaml:
+        preprocess.agg_window: 5min
+        preprocess.output_dir: data/processed
+        preprocess.raw_gpu_path: 
+          data/cluster-trace-v2026-GenAI/pod_gpu_duty_cycle_anon.csv
+        preprocess.raw_qps_path: data/cluster-trace-v2026-GenAI/qps.csv
+    outs:
+    - path: data/processed/features_target.csv
+      hash: md5
+      md5: c6c2e6669e39d0f2bef7a78bb0845dd0
+      size: 1430519

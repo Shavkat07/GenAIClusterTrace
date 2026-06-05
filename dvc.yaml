@@ -1,0 +1,14 @@
+stages:
+  preprocess:
+    cmd: python src/stages/preprocess.py
+    deps:
+      - src/stages/preprocess.py
+      - data/cluster-trace-v2026-GenAI/pod_gpu_duty_cycle_anon.csv
+      - data/cluster-trace-v2026-GenAI/qps.csv
+    params:
+      - preprocess.raw_gpu_path
+      - preprocess.raw_qps_path
+      - preprocess.output_dir
+      - preprocess.agg_window
+    outs:
+      - data/processed/features_target.csv
