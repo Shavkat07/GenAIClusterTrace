@@ -45,6 +45,20 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/data/processed/test.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="/data/processed/train.csv">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/data/raw/lora_request_trace.csv">
           <value>
             <Attribute>

@@ -7,3 +7,8 @@ preprocess:
   raw_qps_path: "data/cluster-trace-v2026-GenAI/qps.csv"
   output_dir: "data/processed"
   agg_window: "5min"
+
+split:
+  input_path: "data/processed/features_target.csv"
+  output_dir: "data/processed"
+  test_size: 0.2

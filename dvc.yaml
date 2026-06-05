@@ -12,3 +12,16 @@ stages:
       - preprocess.agg_window
     outs:
       - data/processed/features_target.csv
+
+  split:
+    cmd: python src/stages/split.py
+    deps:
+      - src/stages/split.py
+      - data/processed/features_target.csv
+    params:
+      - split.input_path
+      - split.output_dir
+      - split.test_size
+    outs:
+      - data/processed/train.csv
+      - data/processed/test.csv
