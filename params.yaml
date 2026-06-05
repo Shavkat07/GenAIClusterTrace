@@ -8,7 +8,29 @@ preprocess:
   output_dir: "data/processed"
   agg_window: "5min"
 
-split:
+features:
   input_path: "data/processed/features_target.csv"
+  output_path: "data/processed/enriched_features.csv"
+
+split:
+  input_path: "data/processed/enriched_features.csv" # Изменили вход на обогащенные признаки
   output_dir: "data/processed"
   test_size: 0.2
+
+train:
+  train_path: "data/processed/train.csv"
+  test_path: "data/processed/test.csv"
+  model_dir: "models"
+  model_name: "baseline_model.pkl"
+  reports_dir: "reports"
+  metrics_name: "metrics.json"
+  features: # Расширили список признаков для модели
+    - "node_generative_qps"
+    - "global_api_qps"
+    - "node_qps_lag_1"
+    - "node_qps_lag_2"
+    - "node_qps_roll_mean_3"
+    - "node_qps_roll_std_3"
+  target: "gpu_util"
+  n_estimators: 50
+  max_depth: 6

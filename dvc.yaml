@@ -25,3 +25,27 @@ stages:
     outs:
       - data/processed/train.csv
       - data/processed/test.csv
+
+  train:
+    cmd: python src/stages/train.py
+    deps:
+      - src/stages/train.py
+      - data/processed/train.csv
+      - data/processed/test.csv
+    params:
+      - base.random_state
+      - train.train_path
+      - train.test_path
+      - train.model_dir
+      - train.model_name
+      - train.reports_dir
+      - train.metrics_name
+      - train.features
+      - train.target
+      - train.n_estimators
+      - train.max_depth
+    outs:
+      - models/baseline_model.pkl
+    metrics:
+      - reports/metrics.json:
+          cache: false

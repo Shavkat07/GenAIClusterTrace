@@ -13,8 +13,8 @@ stages:
       size: 2066880
     - path: src/stages/preprocess.py
       hash: md5
-      md5: 23bd272c326f2009c7b497f82077b9f5
-      size: 4390
+      md5: 25d90506aeb0a482d43c8f5caefe779e
+      size: 3652
     params:
       params.yaml:
         preprocess.agg_window: 5min
@@ -25,15 +25,15 @@ stages:
     outs:
     - path: data/processed/features_target.csv
       hash: md5
-      md5: c6c2e6669e39d0f2bef7a78bb0845dd0
-      size: 1430519
+      md5: 634495fc7604b2e53e3d6602f9fc43c3
+      size: 1421689
   split:
     cmd: python src/stages/split.py
     deps:
     - path: data/processed/features_target.csv
       hash: md5
-      md5: c6c2e6669e39d0f2bef7a78bb0845dd0
-      size: 1430519
+      md5: 634495fc7604b2e53e3d6602f9fc43c3
+      size: 1421689
     - path: src/stages/split.py
       hash: md5
       md5: 5bd442d398e6087901583318af1362a0
@@ -50,5 +50,44 @@ stages:
       size: 27266
     - path: data/processed/train.csv
       hash: md5
-      md5: ff6b0552a9daa0e0d393c7b16c5b9f38
-      size: 1359113
+      md5: 31f98dae831a625ab2f5e904b8f1a824
+      size: 1350584
+  train:
+    cmd: python src/stages/train.py
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: ab3d045961a31b24822c7180def55739
+      size: 27266
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 31f98dae831a625ab2f5e904b8f1a824
+      size: 1350584
+    - path: src/stages/train.py
+      hash: md5
+      md5: 6ae725d879c97f1179dcc619d0bdb433
+      size: 2999
+    params:
+      params.yaml:
+        base.random_state: 42
+        train.features:
+        - node_generative_qps
+        - global_api_qps
+        train.max_depth: 6
+        train.metrics_name: metrics.json
+        train.model_dir: models
+        train.model_name: baseline_model.pkl
+        train.n_estimators: 50
+        train.reports_dir: reports
+        train.target: gpu_util
+        train.test_path: data/processed/test.csv
+        train.train_path: data/processed/train.csv
+    outs:
+    - path: models/baseline_model.pkl
+      hash: md5
+      md5: d3625750fbab37578f6101adff15f653
+      size: 456865
+    - path: reports/metrics.json
+      hash: md5
+      md5: cfa5d907c9663eeb3a28653d64107dce
+      size: 95
